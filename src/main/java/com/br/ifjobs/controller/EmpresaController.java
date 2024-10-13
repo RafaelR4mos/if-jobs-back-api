@@ -5,7 +5,7 @@ import com.br.ifjobs.dto.Empresa.EmpresaDTO;
 import com.br.ifjobs.dto.Empresa.EmpresaUpdateDTO;
 import com.br.ifjobs.exception.RegraDeNegocioException;
 import com.br.ifjobs.service.EmpresaService;
-import jakarta.validation.Valid;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("empresa")
 @RequiredArgsConstructor
+@Tag(description = "Endpoints para Empresa", name = "Empresa")
 public class EmpresaController {
 
     private final EmpresaService empresaService;
