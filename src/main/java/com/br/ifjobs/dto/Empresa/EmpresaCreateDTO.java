@@ -29,8 +29,4 @@ public class EmpresaCreateDTO {
 
     @Schema(description = "Status da Empresa", example = "INATIVA")
     private StatusEmpresaEnum statusEmpresa;
-
-    private Timestamp createdAt;
-
-    private Timestamp updatedAt;
 }

@@ -1,6 +1,7 @@
 package com.br.ifjobs.entity;
 
 import com.br.ifjobs.enums.StatusEmpresaEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -11,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -25,6 +27,10 @@ public class EmpresaEntity {
     @SequenceGenerator(sequenceName = "seq_empresas", name = "seq_empresas", allocationSize = 1)
     @Column(name = "id_empresa")
     private Integer idEmpresa;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "empresa")
+    private Set<VagaEntity> vagas;
 
     @Column(name = "cnpj_empresa")
     private String cnpjEmpresa;

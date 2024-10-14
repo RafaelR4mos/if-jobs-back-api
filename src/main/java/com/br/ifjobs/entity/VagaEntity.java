@@ -2,6 +2,7 @@ package com.br.ifjobs.entity;
 
 import com.br.ifjobs.enums.StatusVagaEnum;
 import com.br.ifjobs.enums.TipoJornadaVagaEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,7 +29,8 @@ public class VagaEntity {
     private Integer idVaga;
 
     @ManyToOne
-    private Set<EmpresaEntity> empresa;
+    @JsonIgnore
+    private EmpresaEntity empresa;
 
     @Column(name = "nm_vaga")
     private String nmVaga;
