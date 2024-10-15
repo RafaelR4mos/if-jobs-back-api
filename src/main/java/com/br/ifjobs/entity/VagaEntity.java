@@ -12,7 +12,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
-import java.util.Set;
 
 @Entity(name = "vaga")
 @Table(name = "TB_VAGAS")
@@ -28,7 +27,8 @@ public class VagaEntity {
     @Column(name = "id_vaga")
     private Integer idVaga;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @JsonIgnore
     private EmpresaEntity empresa;
 
@@ -39,15 +39,16 @@ public class VagaEntity {
     private String descVaga;
 
     @Column(name = "tipo_jornada")
+    @Enumerated(EnumType.ORDINAL)
     private TipoJornadaVagaEnum tipoJornada;
 
     @Column(name = "status_vaga")
+    @Enumerated(EnumType.ORDINAL)
     private StatusVagaEnum statusVaga;
 
     @CreationTimestamp
     @Column(name = "created_at")
     private Timestamp createdAt;
-
 
     @UpdateTimestamp
     @Column(name = "updated_at")

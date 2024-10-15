@@ -3,10 +3,14 @@ package com.br.ifjobs.dto.Empresa;
 import com.br.ifjobs.enums.StatusEmpresaEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import java.sql.Timestamp;
 
@@ -17,7 +21,8 @@ import java.sql.Timestamp;
 public class EmpresaUpdateDTO {
 
     @Schema(description = "CNPJ da empresa", example = "02.081.839/0001-27")
-    @JsonProperty("cnpjEmpresa")
+    @Size(max = 20)
+    @CNPJ(message = "o cnpj deve seguir o formato padrão brasileiro, como: 02.081.839/0001-27")
     private String cnpjEmpresa;
 
     @Schema(description = "Nome da empresa", example = "Nome Empresa teste 1")
@@ -28,8 +33,4 @@ public class EmpresaUpdateDTO {
 
     @Schema(description = "Status da Empresa", example = "INATIVA")
     private StatusEmpresaEnum statusEmpresa;
-
-    private Timestamp createdAt;
-
-    private Timestamp updatedAt;
 }

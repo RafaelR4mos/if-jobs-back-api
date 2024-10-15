@@ -42,6 +42,7 @@ public class EmpresaEntity {
     private String descEmpresa;
 
     @Column(name = "status_empresa")
+    @Enumerated(EnumType.ORDINAL)
     private StatusEmpresaEnum statusEmpresa;
 
     @CreationTimestamp

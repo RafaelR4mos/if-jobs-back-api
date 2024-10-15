@@ -22,7 +22,7 @@ public class EmpresaController {
     private final EmpresaService empresaService;
 
     @PostMapping
-    public ResponseEntity<EmpresaDTO> create(EmpresaCreateDTO empresaCreateDTO) {
+    public ResponseEntity<EmpresaDTO> create(@RequestBody EmpresaCreateDTO empresaCreateDTO) {
         return new ResponseEntity<>(empresaService.create(empresaCreateDTO), HttpStatus.CREATED);
     }
 
@@ -31,8 +31,13 @@ public class EmpresaController {
         return new ResponseEntity<>(empresaService.findAll(), HttpStatus.OK);
     }
 
+    @GetMapping("/{idEmpresa}")
+    public ResponseEntity<EmpresaDTO> findById(@PathVariable Integer idEmpresa) throws RegraDeNegocioException {
+        return new ResponseEntity<>(empresaService.findById(idEmpresa), HttpStatus.OK);
+    }
+
     @PutMapping("/{idEmpresa}")
-    public ResponseEntity<EmpresaDTO> update(EmpresaUpdateDTO empresaUpdateDTO, @PathVariable Integer idEmpresa) throws RegraDeNegocioException {
+    public ResponseEntity<EmpresaDTO> update(@RequestBody EmpresaUpdateDTO empresaUpdateDTO, @PathVariable Integer idEmpresa) throws RegraDeNegocioException {
         return new ResponseEntity<>(empresaService.update(empresaUpdateDTO, idEmpresa), HttpStatus.OK);
     }
 

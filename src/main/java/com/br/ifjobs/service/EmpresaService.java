@@ -34,6 +34,11 @@ public class EmpresaService {
         return empresas;
     }
 
+    public EmpresaDTO findById(Integer idEmpresa) throws RegraDeNegocioException {
+        EmpresaEntity empresaEntity = getEmpresa(idEmpresa);
+        return objectMapper.convertValue(empresaEntity, EmpresaDTO.class);
+    }
+
     public EmpresaDTO update(EmpresaUpdateDTO empresaUpdateDTO, Integer empresaId) throws RegraDeNegocioException {
         EmpresaEntity empresaEntity = getEmpresa(empresaId);
 
