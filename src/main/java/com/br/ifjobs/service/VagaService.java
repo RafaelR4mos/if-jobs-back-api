@@ -25,8 +25,6 @@ public class VagaService {
     private final VagaRepository vagaRepository;
     private final ObjectMapper objectMapper;
 
-    //criar métodos
-
     public VagaDTO create(VagaCreateDTO vagaCreateDTO) throws RegraDeNegocioException {
         VagaEntity vagaEntity = objectMapper.convertValue(vagaCreateDTO, VagaEntity.class);
 

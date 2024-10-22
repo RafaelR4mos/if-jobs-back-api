@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("empresa")
+@RequestMapping("/empresa")
 @RequiredArgsConstructor
 @Tag(description = "Endpoints para Empresa", name = "Empresa")
 public class EmpresaController {
