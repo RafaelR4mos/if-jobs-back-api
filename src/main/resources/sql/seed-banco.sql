@@ -39,3 +39,4 @@ VALUES (nextval('seq_vagas'), 2, 2, 'Analista Financeiro', 'Vaga para analista f
 INSERT INTO ifjobs.TB_VAGAS (id_vaga, id_empresa, id_endereco, nm_vaga, desc_vaga, tipo_jornada, status_vaga, created_at, updated_at)
 VALUES (nextval('seq_vagas'), 3, 3, 'Gerente de Marketing', 'Vaga para gerente de marketing com foco em campanhas digitais', 2, 2, CURRENT_TIMESTAMP, NULL);
 
+

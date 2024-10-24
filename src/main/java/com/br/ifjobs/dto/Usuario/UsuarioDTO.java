@@ -1,11 +1,9 @@
 package com.br.ifjobs.dto.Usuario;
 
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CPF;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
