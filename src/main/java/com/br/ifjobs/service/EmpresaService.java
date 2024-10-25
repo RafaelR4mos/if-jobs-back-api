@@ -4,6 +4,7 @@ import com.br.ifjobs.dto.Empresa.EmpresaCreateDTO;
 import com.br.ifjobs.dto.Empresa.EmpresaDTO;
 import com.br.ifjobs.dto.Empresa.EmpresaUpdateDTO;
 import com.br.ifjobs.entity.EmpresaEntity;
+import com.br.ifjobs.enums.StatusEmpresaEnum;
 import com.br.ifjobs.exception.RegraDeNegocioException;
 import com.br.ifjobs.repository.EmpresaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -53,7 +54,13 @@ public class EmpresaService {
     public void delete(Integer empresaId) throws RegraDeNegocioException {
         EmpresaEntity empresaEntity = getEmpresa(empresaId);
 
-        empresaRepository.deleteById(empresaEntity.getIdEmpresa());
+        if(empresaEntity.getStatusEmpresa().equals(StatusEmpresaEnum.INATIVA)) {
+            throw new RegraDeNegocioException("Esta empresa já está inativa");
+        }
+
+        empresaEntity.setStatusEmpresa(StatusEmpresaEnum.INATIVA);
+
+        empresaRepository.save(empresaEntity);
     }
 
     public EmpresaEntity getEmpresa(Integer empresaId) throws RegraDeNegocioException {
