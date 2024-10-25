@@ -25,13 +25,13 @@ public class WebConfig implements WebMvcConfigurer {
                 .mediaType("json", MediaType.APPLICATION_JSON)
                 .mediaType("xml", MediaType.APPLICATION_XML); */
 
-        // Via HEADER PARAM.
-//        configurer.favorParameter(false)
-//                .ignoreAcceptHeader(false)
-//                .useRegisteredExtensionsOnly(false)
-//                .defaultContentType(MediaType.APPLICATION_JSON)
-//                .mediaType("json", MediaType.APPLICATION_JSON)
-//                .mediaType("xml", MediaType.APPLICATION_XML);
+         //Via HEADER PARAM.
+        configurer.favorParameter(false)
+                .ignoreAcceptHeader(false)
+                .useRegisteredExtensionsOnly(false)
+                .defaultContentType(MediaType.APPLICATION_JSON)
+                .mediaType("json", MediaType.APPLICATION_JSON)
+                .mediaType("xml", MediaType.APPLICATION_XML);
     }
 
     @Override
@@ -39,6 +39,8 @@ public class WebConfig implements WebMvcConfigurer {
         var allowedOrigins = corsOriginPatterns.split(",");
         registry.addMapping("/**")
                 .allowedMethods("*")
-                .allowedOrigins("*");
+                .allowedOrigins("*")
+                .allowedHeaders("*")
+                .allowedOriginPatterns("*");
     }
 }
