@@ -35,6 +35,7 @@ public class SecurityConfig {
                         .requestMatchers("/empresa/**").permitAll()
                         .requestMatchers("/vaga/**").permitAll()
                         .requestMatchers("/usuario/**").permitAll()
+                        .requestMatchers("/actuator", "/actuator/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
